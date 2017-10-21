@@ -16,6 +16,7 @@ import { ProgramarVuelosComponent } from './Components/analista/programar-vuelos
 import { AnalisisGananciasComponent } from './Components/analista/analisis-ganancias/analisis-ganancias.component';
 import { VentaTicketsComponent } from './Components/vendedor/venta-tickets/venta-tickets.component';
 import { CerrarVuelosComponent } from './Components/vendedor/cerrar-vuelos/cerrar-vuelos.component';
+import { MenuGlobalComponent } from './Components/shared/menu-global/menu-global.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CerrarVuelosComponent } from './Components/vendedor/cerrar-vuelos/cerra
     ProgramarVuelosComponent,
     AnalisisGananciasComponent,
     VentaTicketsComponent,
-    CerrarVuelosComponent
+    CerrarVuelosComponent,
+    MenuGlobalComponent
   ],
   imports: [
     BrowserModule,
