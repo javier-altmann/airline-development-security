@@ -1,5 +1,5 @@
-
 <app-menu-analista></app-menu-analista>
+
 <div class="container menu-margin">
     <h1>Programar vuelos</h1>
 </div>
@@ -10,15 +10,14 @@
     <div class="col">
         <label for="inputRuta">Ruta</label>
         <select class="form-control">
-            <option>Ruta1</option>
-            <option>Ruta2</option>
+            <option *ngFor="let rutas of ruta  | async rutas"> {{rutas.name}} </option>
+            
           </select>
     </div>
     <div class="col">
         <label for="inputAvion">Avión</label>
         <select class="form-control">
-            <option>Avion1</option>
-            <option>Avion2</option>
+          <option *ngFor="let aviones of avion  | async aviones">{{ aviones.name }}</option>
           </select>
     </div>
   </div>
@@ -26,3 +25,4 @@
   <button type="submit" class="btn btn-primary btn-block">Guardar</button>
 </form>
 </div>
+

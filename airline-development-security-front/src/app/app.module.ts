@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+
 
 //Rutas
 import {  APP_ROUTING } from './app.routes';
 
 //Servicios
+import { ProgramarVuelosService } from './services/programar-vuelos.service';
 
 
 //Componentes
@@ -18,10 +20,12 @@ import { MenuVendedorComponent } from './components/shared/menu-vendedor/menu-ve
 import { AltaAvionesComponent } from './components/globales/alta-aviones/alta-aviones.component';
 import { AltaDestinosComponent } from './components/globales/alta-destinos/alta-destinos.component';
 import { ProgramarVuelosComponent } from './components/analista/programar-vuelos/programar-vuelos.component';
-import { AnalisisGananciasComponent } from './components/analista/analisis-ganancias/analisis-ganancias.component';
 import { VentaTicketsComponent } from './components/vendedor/venta-tickets/venta-tickets.component';
 import { CerrarVuelosComponent } from './components/vendedor/cerrar-vuelos/cerrar-vuelos.component';
 import { MenuGlobalComponent } from './components/shared/menu-global/menu-global.component';
+import { GananciasVuelosComponent } from './components/analista/ganancias-vuelos/ganancias-vuelos.component';
+import { GananciasRutasComponent } from './components/analista/ganancias-rutas/ganancias-rutas.component';
+import { GananciasTotalesComponent } from './components/analista/ganancias-totales/ganancias-totales.component';
 
 
 
@@ -35,18 +39,21 @@ import { MenuGlobalComponent } from './components/shared/menu-global/menu-global
     AltaAvionesComponent,
     AltaDestinosComponent,
     ProgramarVuelosComponent,
-    AnalisisGananciasComponent,
     VentaTicketsComponent,
     CerrarVuelosComponent,
-    MenuGlobalComponent
+    MenuGlobalComponent,
+    GananciasVuelosComponent,
+    GananciasRutasComponent,
+    GananciasTotalesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    APP_ROUTING
+    HttpClientModule,
+    APP_ROUTING,
+
   ],
-  providers: [],
+  providers: [ProgramarVuelosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

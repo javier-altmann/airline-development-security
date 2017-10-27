@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-menu-vendedor',
-  templateUrl: './menu-vendedor.component.html',
-  styleUrls: ['./menu-vendedor.component.css']
+  templateUrl: './menu-vendedor.component.html'
+
 })
 export class MenuVendedorComponent implements OnInit {
 

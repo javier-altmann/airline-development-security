@@ -14,8 +14,16 @@
         <a class="nav-link"  [routerLink]="['/programarVuelos']" >Programar vuelos</a>
       </li>
       
-      <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/analisisGanancias']">Analisis de ganancias</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Analisis de ganancias
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/gananciasPorVuelo']">Ganancias por vuelo</a>
+            <a class="dropdown-item" [routerLink]="['/gananciasPorRuta']">Ganancias por ruta</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"[routerLink]="['/gananciasTotales']">Ganancias totales</a>
+          </div>
         </li>
     </ul>
     <button type="button" class="btn btn-outline-primary">Cerrar Sesion</button>
