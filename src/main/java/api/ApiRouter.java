@@ -2,6 +2,7 @@ package api;
 
 import conf.Enviroment;
 import spark.Router;
+import spark.Spark;
 
 import javax.inject.Inject;
 
@@ -22,7 +23,9 @@ public class ApiRouter implements Router {
     @Override
     public void routeServices() {
 
-        get("/" + appContext + "/version", (req, res) -> appVersion);
+        Spark.get("/" + appContext + "/version", (req, res) -> appVersion);
+
+        Spark.get("/HolaVale", (req, res) -> apiService.saludar());
 
     }
 
