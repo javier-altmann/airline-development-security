@@ -14,8 +14,6 @@ import ui.UiRouter;
 
 public final class Main extends AbstractModule {
 
-    private static final int DEFAULT_PORT = 4567;
-
     public static void main(String... args) {
         try {
             Injector injector = Guice.createInjector(new UiModule());
