@@ -6,27 +6,50 @@
 
 <div class="card">
   <div class="card-body">
-    <form>
-      <div class="form-group">
+    <form [formGroup]="form" (ng-submit)="guardar()" >
+      <div class="form-group" >
         <label for="exampleFormControlInput1">Marca</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Marca">
+        <input type="text" name="marca" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.marca.errors, 
+          'is-valid': form.controls.marca.valid 
+        }" placeholder="Marca" formControlName="marca">
+      
       </div>
       
       <div class="form-group">
         <label for="exampleFormControlInput1">Modelo</label>
-        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Boeing 747">
-      </div>
+        <input  name="modelo" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.modelo.errors, 
+          'is-valid': form.controls.modelo.valid 
+        }" formControlName="modelo" placeholder="Boeing 747">
+        
+      </div> 
 
-      <div class="form-group">
+      <div class="form-group" >
         <label for="exampleFormControlInput1">Matricula</label>
-        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="ADS10D">
+        <input  name="matricula" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.matricula.errors, 
+          'is-valid': form.controls.matricula.valid 
+        }" formControlName="matricula" placeholder="ADS10D">
+        
       </div>
 
+
       <div class="form-group">
-        <label for="exampleFormControlInput1">Cantidad de butacas</label>
-        <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="50">
+        <label for="exampleFormControlInput1">Butacas</label>
+        <input  name="butacas" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.butacas.errors, 
+          'is-valid': form.controls.butacas.valid || form.controls.butacas.errors.maxlength
+        }" formControlName="butacas" placeholder="50">
+
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+      
+   
+      <button type="submit"class="btn btn-primary btn-block" [disabled]="!form.valid" (click)="guardarAltaAvion()">Guardar</button>
     </form>
   </div>
 </div>
+
+
+
+

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -9,7 +9,7 @@ import {  APP_ROUTING } from './app.routes';
 
 //Servicios
 import { ProgramarVuelosService } from './services/programar-vuelos.service';
-
+import { AltaAvionesService } from './services/alta-aviones.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -49,11 +49,12 @@ import { GananciasTotalesComponent } from './components/analista/ganancias-total
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     APP_ROUTING,
 
   ],
-  providers: [ProgramarVuelosService],
+  providers: [ProgramarVuelosService, AltaAvionesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
