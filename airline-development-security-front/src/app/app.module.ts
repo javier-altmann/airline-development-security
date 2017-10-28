@@ -10,6 +10,7 @@ import {  APP_ROUTING } from './app.routes';
 //Servicios
 import { ProgramarVuelosService } from './services/programar-vuelos.service';
 import { AltaAvionesService } from './services/alta-aviones.service';
+import { AltaDestinosService } from './services/alta-destinos.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -54,7 +55,7 @@ import { GananciasTotalesComponent } from './components/analista/ganancias-total
     APP_ROUTING,
 
   ],
-  providers: [ProgramarVuelosService, AltaAvionesService ],
+  providers: [ProgramarVuelosService, AltaAvionesService,AltaDestinosService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

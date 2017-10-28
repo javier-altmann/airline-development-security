@@ -5,29 +5,45 @@
 </div>
 
 <div class="container menu-margin">
-<form>
+<form [formGroup]="form" >
     <div class="form-group">
-        <label for="inputCosto">Ruta</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="">
+        <label for="inputRuta">Ruta</label>
+        <input type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.ruta.errors, 
+          'is-valid': form.controls.ruta.valid 
+        }"
+        placeholder="" formControlName="ruta">
       </div>
   
   <div class="form-row">
 
     <div class="form-group col-md-6">
       <label for="inputInicio">Inicio</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Brasil">
+      <input type="text" class="form-control" [ngClass]="{
+        'is-invalid': form.controls.inicio.errors, 
+        'is-valid': form.controls.inicio.valid 
+      }"
+      placeholder="Brasil" formControlName="inicio">
     </div>
     <div class="form-group col-md-6">
       <label for="inputDestino">Destino</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Argentina">
+      <input type="text" class="form-control" [ngClass]="{
+        'is-invalid': form.controls.destino.errors, 
+        'is-valid': form.controls.destino.valid 
+      }"
+       placeholder="Argentina" formControlName="destino">
     </div>
   </div>
   <div class="form-group">
     <label for="inputCosto">Costo</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="10000">
+    <input type="text" class="form-control" [ngClass]="{
+      'is-invalid': form.controls.costo.errors, 
+      'is-valid': form.controls.costo.valid 
+    }"
+    placeholder="10000" formControlName="costo">
   </div>
   
-  <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid" (click)="guardarAltaDestino()" >Guardar</button>
 </form>
 
 </div>
