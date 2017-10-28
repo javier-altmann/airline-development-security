@@ -10,8 +10,8 @@ import { RutasResponse } from '../../../interfaces/rutas-response';
 })
 export class ProgramarVuelosComponent implements OnInit {
 
- private avion:Observable<AvionesResponse>;
- private ruta:Observable<RutasResponse>;
+ public avion:Observable<AvionesResponse>;
+ public ruta:Observable<RutasResponse>;
 
   constructor(private _programarVuelosService:ProgramarVuelosService) { }
  
