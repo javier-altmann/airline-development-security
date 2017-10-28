@@ -4,20 +4,31 @@
     <h1>Venta de Tickets</h1>
 </div>
 <div class="container menu-margin">
-<form>
+<form [formGroup]="form">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputInicio">Nombre de pasajero</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Juan">
+      <input type="text" class="form-control" formControlName="nombre" [ngClass]="{
+        'is-invalid': form.controls.nombre.errors, 
+        'is-valid': form.controls.nombre.valid 
+      }"
+      placeholder="Juan">
     </div>
     <div class="form-group col-md-6">
       <label for="inputDestino">DNI de pasajero</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="38098123">
+      <input type="text" class="form-control" formControlName="dni" [ngClass]="{
+        'is-invalid': form.controls.dni.errors, 
+        'is-valid': form.controls.dni.valid 
+      }"
+      placeholder="38098123">
     </div>
   </div>
   <div class="form-group">
     <label for="inputCosto">Asientos disponibles</label>
-    <select class="form-control">
+    <select class="form-control" formControlName="asiento" [ngClass]="{
+      'is-invalid': form.controls.asiento.errors, 
+      'is-valid': form.controls.asiento.valid 
+    }">
         <option>Asiento1</option>
         <option>Asiento2</option>
       </select>
@@ -26,14 +37,17 @@
   
     <div class="form-group">
       <label for="inputState">Rutas disponibles</label>
-      <select class="form-control">
+      <select class="form-control" formControlName="ruta" [ngClass]="{
+        'is-invalid': form.controls.ruta.errors, 
+        'is-valid': form.controls.ruta.valid 
+      }">
         <option>Ruta1</option>
         <option>Ruta2</option>
       </select>
     </div>
     
   
-  <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid" (click)="guardarVentaTicket()">Guardar</button>
 </form>
 
 </div>
