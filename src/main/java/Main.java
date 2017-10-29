@@ -6,29 +6,29 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import com.google.inject.multibindings.Multibinder;
+import database.DatabaseModule;
+import database.DatabaseRouter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Router;
 import spark.RouterManager;
 import spark.Spark;
-import spark.Sparks;
 import ui.UiModule;
 import ui.UiRouter;
 
+
 public final class Main extends AbstractModule {
 
+    static final Logger logger = LoggerFactory.getLogger(Main.class);
+
     public static void main(String... args) {
-        try {
-            Injector injector = Guice.createInjector(new UiModule(), new ApiModule());
+        Injector injector = Guice.createInjector(new UiModule(), new ApiModule(), new DatabaseModule());
 
-            Spark.port(getHerokuAssignedPort());
+        Spark.port(getHerokuAssignedPort());
 
+        RouterManager routerManager = injector.getInstance(RouterManager.class);
+        routerManager.initAllRouters();
 
-            RouterManager routerManager = injector.getInstance(RouterManager.class);
-            routerManager.initAllRouters();
-
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     static int getHerokuAssignedPort() {
@@ -49,5 +49,10 @@ public final class Main extends AbstractModule {
 
         bind(ApiRouter.class);
         routerBinder.addBinding().to(ApiRouter.class);
+
+        bind(DatabaseRouter.class);
+        routerBinder.addBinding().to(DatabaseRouter.class);
     }
+
+
 }
