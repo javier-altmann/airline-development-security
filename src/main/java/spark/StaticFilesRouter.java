@@ -26,28 +26,10 @@ public class StaticFilesRouter implements Router {
     @Override
     public void routeServices() {
 
-        configureFolder(appContext + "/partials/:file", "public/partials");
-
-        configureFolder(appContext + "/js/:file", "public/js");
-
-        configureFolder(appContext + "/assets/:file", "public/assets");
-        configureFolder(appContext + "/css/:file", "public/css");
-
         configureFile(appContext + "/index.html", "public/index.html");
         configureFile(appContext + "/", "public/index.html");
     }
 
-    private void configureFolder(String fullContext, String resoureFolder) {
-        get(fullContext, (req, res) -> {
-            String[] parts = fullContext.split("/", -1);
-            String filePath = resoureFolder + "/" + Arrays.stream(parts)
-                    .filter(s -> ':' == s.charAt(0))
-                    .map(s -> s.substring(1)).map(req::params)
-                    .collect(Collectors.joining("/"));
-
-            return writeFileToOutput(filePath, res);
-        });
-    }
 
     private void configureFile(String fullContext, String filePath) {
         get(fullContext, (req, res) -> writeFileToOutput(filePath, res));
