@@ -5,24 +5,29 @@
 </div>
 
 <div class="container menu-margin">
-<form>
+<form [formGroup]="form">
+
   <div class="form-row">
     <div class="col">
         <label for="inputRuta">Ruta</label>
-        <select class="form-control">
-            <option *ngFor="let rutas of ruta  | async rutas"> {{rutas.name}} </option>
-            
-          </select>
-    </div>
+    <select *ngIf="ruta | async as ruta" class="form-control" formControlName="ruta">
+        <option [value]="rutas.name" *ngFor="let rutas of ruta">
+          {{ rutas.name}}
+        </option>
+      </select>
+      </div>
+
     <div class="col">
-        <label for="inputAvion">Avión</label>
-        <select class="form-control">
-          <option *ngFor="let aviones of avion  | async aviones">{{ aviones.name }}</option>
-          </select>
+        <label for="inputAvion">Avión</label>     
+          <select *ngIf="avion | async as avion" class="form-control" formControlName="avion">
+              <option [value]="aviones.name" *ngFor="let aviones of avion">
+                {{ aviones.name}}
+              </option>
+            </select>
     </div>
   </div>
   <br>
-  <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid"   (click)="guardarVuelo()">Guardar</button>
 </form>
 </div>
 
