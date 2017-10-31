@@ -2,7 +2,8 @@ package conf;
 
 public enum Enviroment {
     APP_CONTEXT("aerolineas"),
-    APP_VERSION("0.0.1");
+    APP_VERSION("0.0.1"),
+    API_CONTEXT("api");
 
     private String property;
 

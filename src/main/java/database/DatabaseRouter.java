@@ -19,7 +19,7 @@ public class DatabaseRouter implements Router {
     public void routeServices() {
 
         Spark.get("/database/healthcheck", (req, res) ->
-                connection.getConnection().isClosed() ? "Conexión abierta" : "Conexion cerrada"
+                connection.getConnection().isClosed() ? "Sin conexión" : "Conx conexión"
         );
 
 

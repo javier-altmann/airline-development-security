@@ -13,7 +13,7 @@ public class ApiRouter implements Router {
     private ConnectionDB connection;
 
 
-    private final String appContext = Enviroment.APP_CONTEXT.getProperty();
+    private final String apiContext = Enviroment.API_CONTEXT.getProperty();
     private final String appVersion = Enviroment.APP_VERSION.getProperty();
 
     @Inject
@@ -26,9 +26,10 @@ public class ApiRouter implements Router {
     @Override
     public void routeServices() {
 
-        Spark.get("/" + appContext + "/version", (req, res) -> appVersion);
+        Spark.get("/" + apiContext + "/version", (req, res) -> appVersion);
 
-        Spark.get("/" + appContext + "/destinations", (req, res) -> apiService.getDestination(connection.getConnection()));
+        Spark.get("/" + apiContext + "/destinations", (req, res) -> apiService.getDestination(connection.getConnection()));
+
+
     }
-
 }
