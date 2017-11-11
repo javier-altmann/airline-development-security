@@ -15,8 +15,7 @@ public class ConnectionDB {
     private Connection connection;
     final Logger logger = LoggerFactory.getLogger(ConnectionDB.class);
 
-    public ConnectionDB() throws SQLException {
-
+    public Connection getConnection() {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://ec2-54-225-88-199.compute-1.amazonaws.com:5432/d4svgafc2bp0m2?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
@@ -25,9 +24,7 @@ public class ConnectionDB {
         } catch (SQLException e) {
             logger.error("Conexión error", e);
         }
-    }
 
-    public Connection getConnection() {
         return connection;
     }
 }
