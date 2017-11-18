@@ -54,6 +54,45 @@ public class FlightService {
 
     }
 
+    public String getSeatsAvailableFromFlight(Connection connection, int id_flight) {
+        query = "\n" +
+                "with seatsAvailable as (\n" +
+                "\tselect \n" +
+                "\t\t*\n" +
+                "\tfrom aircraft\n" +
+                "\t\n" +
+                "\tinner join seat\n" +
+                "\t\ton aircraft.id_seat = seat.id_seat\n" +
+                "\t\n" +
+                "\tinner join flight\n" +
+                "\t\ton flight.id_aircraft = aircraft.id_aircraft\n" +
+                "\t\t\n" +
+                "\tleft join passenger\n" +
+                "\t\ton passenger.seat = seat.seat\n" +
+                "\t\t\n" +
+                "\twhere passenger.id_passenger is null\n" +
+                "\t\t\tand flight.id_flight = " + id_flight + "\n" +
+                ")\n" +
+                "\n" +
+                "select array_to_json(array_agg(seatsAvailable)) from seatsAvailable";
+        try {
+
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                response = rs.getString(1);
+            }
+            rs.close();
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+
+    }
+
     public String getFlightsWithItinerary(Connection connection) {
         query = "with routesOrdered as (\n" +
                 "\twith routes as (\t\n" +
