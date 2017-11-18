@@ -37,14 +37,16 @@ public class AircraftService {
     }
 
     public String createAircraft(Connection connection, AircraftDTO aircraft) {
+
+
         query = "INSERT INTO public.aircraft\n" +
-                "(id_aircraft, brand, model, id_seat, \"registrationNumber\")\n" +
+                "(id_aircraft, brand, model, \"registrationNumber\",id_seat)\n" +
                 "VALUES("
                 + aircraft.getId_aircraft() + ", '"
                 + aircraft.getBrand() + "', '"
-                + aircraft.getModel() + "', "
-                + aircraft.getId_seat() + ", '"
-                + aircraft.getRegistrationNumber() + "');\n";
+                + aircraft.getModel() + "', '"
+                + aircraft.getRegistrationNumber() + "', '"
+                + aircraft.getId_seat() + "');\n";
         try {
 
             st = connection.createStatement();

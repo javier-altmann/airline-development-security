@@ -31,13 +31,13 @@ public class AircraftRouter implements Router {
     public void routeServices() {
 
 
-        get("/" + apiContext + "/aircrafts", (req, res) -> {
+        get("/" + apiContext + "/aircrafts/", (req, res) -> {
                     response = aicraftService.getAircrafts(connection.getConnection());
                     return response;
                 }
         );
 
-        post("/" + apiContext + "/aircrafts/create", (req, res) -> {
+        post("/" + apiContext + "/aircrafts/", (req, res) -> {
                     response = aicraftService.createAircraft(connection.getConnection(), jsonParser.fromJson(req.body(), AircraftDTO.class));
                     return response;
                 }
