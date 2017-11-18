@@ -1,6 +1,14 @@
 
 import api.ApiModule;
 import api.ApiRouter;
+import api.aircrafts.AircraftModule;
+import api.aircrafts.AircraftRouter;
+import api.destinations.DestinationModule;
+import api.destinations.DestinationRouter;
+import api.flights.FlightModule;
+import api.flights.FlightRouter;
+import api.routes.RouteModule;
+import api.routes.RouteRouter;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -16,18 +24,25 @@ import spark.Spark;
 import ui.UiModule;
 import ui.UiRouter;
 
-
 public final class Main extends AbstractModule {
 
     static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String... args) {
-        Injector injector = Guice.createInjector(new UiModule(), new ApiModule(), new DatabaseModule());
+        Injector injector = Guice.createInjector(
+                new UiModule(),
+                new ApiModule(),
+                new DestinationModule(),
+                new FlightModule(),
+                new AircraftModule(),
+                new RouteModule(),
+                new DatabaseModule());
 
         Spark.port(getHerokuAssignedPort());
 
         RouterManager routerManager = injector.getInstance(RouterManager.class);
         routerManager.initAllRouters();
+
 
     }
 
@@ -49,6 +64,18 @@ public final class Main extends AbstractModule {
 
         bind(ApiRouter.class);
         routerBinder.addBinding().to(ApiRouter.class);
+
+        bind(FlightRouter.class);
+        routerBinder.addBinding().to(FlightRouter.class);
+
+        bind(DestinationRouter.class);
+        routerBinder.addBinding().to(DestinationRouter.class);
+
+        bind(AircraftRouter.class);
+        routerBinder.addBinding().to(AircraftRouter.class);
+
+        bind(RouteRouter.class);
+        routerBinder.addBinding().to(RouteRouter.class);
 
         bind(DatabaseRouter.class);
         routerBinder.addBinding().to(DatabaseRouter.class);

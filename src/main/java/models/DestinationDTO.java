@@ -4,7 +4,7 @@ public class DestinationDTO {
 
     private int id_destination;
     private String name;
-    private String description;
+    private String company;
 
     public int getId_destination() {
         return id_destination;
@@ -22,11 +22,11 @@ public class DestinationDTO {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCompany() {
+        return company;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

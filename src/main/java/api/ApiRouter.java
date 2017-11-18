@@ -3,13 +3,11 @@ package api;
 import com.google.gson.Gson;
 import conf.ConnectionDB;
 import conf.Enviroment;
-import models.AircraftDTO;
-import models.FlightDTO;
+import models.*;
 
 
 import javax.inject.Inject;
 
-import models.UserDTO;
 import spark.Router;
 
 
@@ -45,67 +43,6 @@ public class ApiRouter implements Router {
                     return response;
                 }
         );
-
-
-        // ----------------------- API /FLIGHTS
-        get("/" + apiContext + "/flights", (req, res) -> {
-                    response = apiService.getFlights(connection.getConnection());
-                    return response;
-                }
-        );
-
-        post("/" + apiContext + "/flights/create", (req, res) -> {
-                    response = apiService.createFlight(connection.getConnection(), jsonParser.fromJson(req.body(), FlightDTO.class));
-                    return response;
-                }
-        );
-
-/*
-        post("/" + apiContext + "/flights/schedule", (req, res) ->
-
-        );
-
-        post("/" + apiContext + "/flights/close", (req, res) ->
-
-        );
-
-        post("/" + apiContext + "/flights/sell", (req, res) ->
-
-        );
-*/
-
-
-        // ----------------------- API /AIRCRAFT
-        get("/" + apiContext + "/aircrafts", (req, res) -> {
-                    response = apiService.getAircrafts(connection.getConnection());
-                    return response;
-                }
-        );
-
-        post("/" + apiContext + "/aircrafts/create", (req, res) -> {
-                    response = apiService.createAircraft(connection.getConnection(), jsonParser.fromJson(req.body(), AircraftDTO.class));
-                    return response;
-                }
-        );
-
-/*
-        // ----------------------- API /DESTINATIONS
-        get("/" + apiContext + "/destinations", (req, res) ->
-
-        ));
-
-        post("/" + apiContext + "/destinations/create", (req, res) ->
-
-        ));
-
-        // ----------------------- API /ROUTES
-        post("/" + apiContext + "/routes", (req, res) ->
-
-        ));
-
-        post("/" + apiContext + "/routes/create", (req, res) ->
-
-        ));*/
 
     }
 }
