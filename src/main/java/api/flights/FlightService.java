@@ -58,7 +58,8 @@ public class FlightService {
         query = "\n" +
                 "with seatsAvailable as (\n" +
                 "\tselect \n" +
-                "\t\t*\n" +
+                "\t\taircraft.*,\n" +
+                "\t\tseat.*\n" +
                 "\tfrom aircraft\n" +
                 "\t\n" +
                 "\tinner join seat\n" +
@@ -71,7 +72,7 @@ public class FlightService {
                 "\t\ton passenger.seat = seat.seat\n" +
                 "\t\t\n" +
                 "\twhere passenger.id_passenger is null\n" +
-                "\t\t\tand flight.id_flight = " + id_flight + "\n" +
+                "\t\t\tand flight.id_flight = " + id_flight +
                 ")\n" +
                 "\n" +
                 "select array_to_json(array_agg(seatsAvailable)) from seatsAvailable";
