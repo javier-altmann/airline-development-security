@@ -25,9 +25,7 @@ import { ProgramarVuelosComponent } from './components/analista/programar-vuelos
 import { VentaTicketsComponent } from './components/vendedor/venta-tickets/venta-tickets.component';
 import { CerrarVuelosComponent } from './components/vendedor/cerrar-vuelos/cerrar-vuelos.component';
 import { MenuGlobalComponent } from './components/shared/menu-global/menu-global.component';
-import { GananciasVuelosComponent } from './components/analista/ganancias-vuelos/ganancias-vuelos.component';
-import { GananciasRutasComponent } from './components/analista/ganancias-rutas/ganancias-rutas.component';
-import { GananciasTotalesComponent } from './components/analista/ganancias-totales/ganancias-totales.component';
+
 
 
 
@@ -43,10 +41,7 @@ import { GananciasTotalesComponent } from './components/analista/ganancias-total
     ProgramarVuelosComponent,
     VentaTicketsComponent,
     CerrarVuelosComponent,
-    MenuGlobalComponent,
-    GananciasVuelosComponent,
-    GananciasRutasComponent,
-    GananciasTotalesComponent
+    MenuGlobalComponent
   ],
   imports: [
     BrowserModule,
