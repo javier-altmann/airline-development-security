@@ -1,14 +1,13 @@
-package api.routes;
+package api.itinerary;
 
-import models.RouteDTO;
-import models.UserDTO;
+import models.ItineraryDTO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class RouteService {
+public class ItineraryService {
 
     private String response;
     private Statement st;
@@ -16,10 +15,10 @@ public class RouteService {
     private String query;
 
 
-    public String getRoutes(Connection connection) {
+    public String getItineraries(Connection connection) {
 
         query = "with routesOrdered as (\n" +
-                "\twith routes as (\t\n" +
+                "\twith itinerary as (\t\n" +
                 "\t\t(\n" +
                 "\t\t\tselect \n" +
                 "\t\t\t\t\t'from' \"ruta\",\n" +
@@ -49,15 +48,15 @@ public class RouteService {
                 "\t\tDISTINCT\n" +
                 "\t\t\tid_itinerary,\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='from' limit 1\n" +
                 "\t\t\t) \"from\",\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='to' limit 1\n" +
                 "\t\t\t) \"to\"\n" +
                 "\t\t\t\t\n" +
-                "\t\tfrom routes as routesParent\n" +
+                "\t\tfrom itinerary as routesParent\n" +
                 "\t\torder by id_itinerary\n" +
                 ")\n" +
                 "\n" +
@@ -77,7 +76,7 @@ public class RouteService {
         return response;
     }
 
-    public String createRoute(Connection connection, RouteDTO route) {
+    public String createItinerary(Connection connection, ItineraryDTO route) {
         query = " INSERT INTO public.itinerary (id_itinerary, cost_ticket, id_from_destination, id_to_destination)" +
                 " VALUES(" +
                 route.getId_itinerary() + "," +
@@ -91,7 +90,7 @@ public class RouteService {
             st = connection.createStatement();
 
             if (st.executeUpdate(query) == 1) {
-                response = "Ruta cargada correctamente";
+                response = "Itinerario cargada correctamente";
             } else {
                 response = "No se puedo cargar";
 

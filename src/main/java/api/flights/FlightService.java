@@ -96,7 +96,7 @@ public class FlightService {
 
     public String getFlightsWithItinerary(Connection connection) {
         query = "with routesOrdered as (\n" +
-                "\twith routes as (\t\n" +
+                "\twith itinerary as (\t\n" +
                 "\t\t(\n" +
                 "\t\t\tselect \n" +
                 "\t\t\t\t\t'from' \"ruta\",\n" +
@@ -127,11 +127,11 @@ public class FlightService {
                 "\t\t\troutesParent.id_itinerary,\n" +
                 "\t\t\tflight.id_flight,\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='from' limit 1\n" +
                 "\t\t\t) \"from\",\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='to' limit 1\n" +
                 "\t\t\t) \"to\",\n" +
                 "\t\t\t\n" +
@@ -139,7 +139,7 @@ public class FlightService {
                 "\t\t\t\n" +
                 "\t\t\t\n" +
                 "\t\t\t\n" +
-                "\t\tfrom routes as routesParent\n" +
+                "\t\tfrom itinerary as routesParent\n" +
                 "\t\t\n" +
                 "\t\tinner join flight \n" +
                 "\t\t\ton flight.id_itinerary = routesParent.id_itinerary\n" +
@@ -174,7 +174,7 @@ public class FlightService {
 
     public String getFlightWithItinerary(Connection connection, int id_flight) {
         query = "with routesOrdered as (\n" +
-                "\twith routes as (\t\n" +
+                "\twith itinerary as (\t\n" +
                 "\t\t(\n" +
                 "\t\t\tselect \n" +
                 "\t\t\t\t\t'from' \"ruta\",\n" +
@@ -205,11 +205,11 @@ public class FlightService {
                 "\t\t\troutesParent.id_itinerary,\n" +
                 "\t\t\tflight.id_flight,\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='from' limit 1\n" +
                 "\t\t\t) \"from\",\n" +
                 "\t\t\t(\n" +
-                "\t\t\t\tselect \"name\" from routes as \"from\"\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
                 "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='to' limit 1\n" +
                 "\t\t\t) \"to\",\n" +
                 "\t\t\t\n" +
@@ -217,7 +217,7 @@ public class FlightService {
                 "\t\t\t\n" +
                 "\t\t\t\n" +
                 "\t\t\t\n" +
-                "\t\tfrom routes as routesParent\n" +
+                "\t\tfrom itinerary as routesParent\n" +
                 "\t\t\n" +
                 "\t\tinner join flight \n" +
                 "\t\t\ton flight.id_itinerary = routesParent.id_itinerary\n" +
@@ -250,12 +250,11 @@ public class FlightService {
 
     }
 
-
     public String createFlight(Connection connection, FlightDTO flight) {
         query = "INSERT INTO public.flight\n" +
-                "            (id_flight, id_aircraft, id_itinerary, id_passenger)\n" +
+                "            (id_flight, id_aircraft, id_itinerary, id_passenger_list,status)\n" +
                 "    VALUES" +
-                "(" + flight.getId_flight() + ", " + flight.getId_aircraft() + "," + flight.getId_itinerary() + "," + flight.getId_passenger() + ");";
+                "(" + flight.getId_flight() + ", " + flight.getId_aircraft() + "," + flight.getId_itinerary() + "," + flight.getId_passenger_list() + ",'" + flight.getStatus() + "');";
         try {
 
             st = connection.createStatement();

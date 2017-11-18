@@ -34,11 +34,10 @@ public class DestinationService {
 
     public String createDestination(Connection connection, DestinationDTO destination) {
         query = "INSERT INTO public.destination\n" +
-                "(id_destination, \"name\", company)\n" +
+                "(id_destination, \"name\")\n" +
                 "VALUES("
                 + destination.getId_destination() + ", '"
-                + destination.getName() + "', '"
-                + destination.getCompany() + "');";
+                + destination.getName() + "');";
         try {
 
             st = connection.createStatement();

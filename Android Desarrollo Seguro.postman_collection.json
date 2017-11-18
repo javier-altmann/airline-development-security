@@ -1,0 +1,262 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Android Desarrollo Seguro",
+		"_postman_id": "92a0bb2e-f26a-541e-5a39-675c7b1eb3e8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aircrafts",
+			"description": "",
+			"item": [
+				{
+					"name": "CreateAircraft",
+					"request": {
+						"url": "localhost:4567/api/aircraft/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetAircrafts",
+					"request": {
+						"url": "localhost:4567/api/aircrafts/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Destinations",
+			"description": "",
+			"item": [
+				{
+					"name": "CreateDestination",
+					"request": {
+						"url": "localhost:4567/api/destination/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_destination': '9999',\n\t'name': 'TestName'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetDestinations",
+					"request": {
+						"url": "localhost:4567/api/destinations/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Itineraries",
+			"description": "",
+			"item": [
+				{
+					"name": "CreateItinerary",
+					"request": {
+						"url": "localhost:4567/api/itinerary/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_itinerary': '9999',\n\t'cost_ticket': '9999',\n\t'id_from_destination': '9999',\n\t'id_to_destination': '9999'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetItineraries",
+					"request": {
+						"url": "localhost:4567/api/itineraries/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flights",
+			"description": "",
+			"item": [
+				{
+					"name": "CreateFlight",
+					"request": {
+						"url": "localhost:4567/api/flight/",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_flight': '1',\n\t'id_aircraft': '1',\n\t'id_itinerary': '1',\n\t'id_passenger_list': '1',\n\t'status': 'open'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlights",
+					"request": {
+						"url": "localhost:4567/api/flights/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlightsItinerary",
+					"request": {
+						"url": "localhost:4567/api/flights/itinerary/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlight(id)",
+					"request": {
+						"url": {
+							"raw": "localhost:4567/api/flight/:id/",
+							"host": [
+								"localhost"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"flight",
+								":id",
+								""
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlight(id) Seats Available",
+					"request": {
+						"url": {
+							"raw": "localhost:4567/api/flight/:id/seats-available/",
+							"host": [
+								"localhost"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"flight",
+								":id",
+								"seats-available",
+								""
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFlightItinerary(id)",
+					"request": {
+						"url": {
+							"raw": "localhost:4567/api/flight/:id/itinerary/",
+							"host": [
+								"localhost"
+							],
+							"port": "4567",
+							"path": [
+								"api",
+								"flight",
+								":id",
+								"itinerary",
+								""
+							],
+							"query": [],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'id_aircraft': '9999',\n\t'brand': 'TestBrand',\n\t'model': 'TestModel',\n\t'id_seat': '999',\n\t'registrationNumber': 'Test'\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

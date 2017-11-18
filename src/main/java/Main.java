@@ -7,8 +7,8 @@ import api.destinations.DestinationModule;
 import api.destinations.DestinationRouter;
 import api.flights.FlightModule;
 import api.flights.FlightRouter;
-import api.routes.RouteModule;
-import api.routes.RouteRouter;
+import api.itinerary.ItineraryModule;
+import api.itinerary.ItineraryRouter;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -35,7 +35,7 @@ public final class Main extends AbstractModule {
                 new DestinationModule(),
                 new FlightModule(),
                 new AircraftModule(),
-                new RouteModule(),
+                new ItineraryModule(),
                 new DatabaseModule());
 
         Spark.port(getHerokuAssignedPort());
@@ -74,8 +74,8 @@ public final class Main extends AbstractModule {
         bind(AircraftRouter.class);
         routerBinder.addBinding().to(AircraftRouter.class);
 
-        bind(RouteRouter.class);
-        routerBinder.addBinding().to(RouteRouter.class);
+        bind(ItineraryRouter.class);
+        routerBinder.addBinding().to(ItineraryRouter.class);
 
         bind(DatabaseRouter.class);
         routerBinder.addBinding().to(DatabaseRouter.class);

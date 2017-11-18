@@ -31,13 +31,13 @@ public class DestinationRouter implements Router {
     @Override
     public void routeServices() {
 
-        get("/" + apiContext + "/destinations", (req, res) -> {
+        get("/" + apiContext + "/destinations/", (req, res) -> {
                     response = destinationService.getDestinations(connection.getConnection());
                     return response;
                 }
         );
 
-        post("/" + apiContext + "/destinations/create", (req, res) -> {
+        post("/" + apiContext + "/destination/", (req, res) -> {
                     response = destinationService.createDestination(connection.getConnection(), jsonParser.fromJson(req.body(), DestinationDTO.class));
                     return response;
                 }

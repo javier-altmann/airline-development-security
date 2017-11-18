@@ -37,7 +37,7 @@ public class AircraftRouter implements Router {
                 }
         );
 
-        post("/" + apiContext + "/aircrafts/", (req, res) -> {
+        post("/" + apiContext + "/aircraft/", (req, res) -> {
                     response = aicraftService.createAircraft(connection.getConnection(), jsonParser.fromJson(req.body(), AircraftDTO.class));
                     return response;
                 }

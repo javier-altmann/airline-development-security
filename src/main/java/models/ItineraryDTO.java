@@ -1,6 +1,6 @@
 package models;
 
-public class RouteDTO {
+public class ItineraryDTO {
 
     private int id_itinerary;
     private int cost_ticket;

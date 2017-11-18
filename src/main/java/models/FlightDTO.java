@@ -5,8 +5,16 @@ public class FlightDTO {
     private String id_flight;
     private String id_aircraft;
     private String id_itinerary;
-    private String id_passenger;
+    private String id_passenger_list;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getId_flight() {
         return id_flight;
@@ -32,11 +40,11 @@ public class FlightDTO {
         this.id_itinerary = id_itinerary;
     }
 
-    public String getId_passenger() {
-        return id_passenger;
+    public String getId_passenger_list() {
+        return id_passenger_list;
     }
 
-    public void setId_passenger(String id_passenger) {
-        this.id_passenger = id_passenger;
+    public void setId_passenger_list(String id_passenger_list) {
+        this.id_passenger_list = id_passenger_list;
     }
 }

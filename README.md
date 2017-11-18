@@ -1,6 +1,9 @@
-# Spark-webapp-template
+# Trabajo Práctico Desarrollo Seguro
 
-Proyecto template para levantar un servidor con html estatico. Forkeado de Desarrollo Seguro
+## Configuración del postman 
+
+* Importar `Android Desarrollo Seguro.postman_collection.json` en **POSTMAN** para tener los request configurados.
+
 
 ## Como subir a Heroku
 
