@@ -34,11 +34,11 @@ public class ApiRouter implements Router {
     @Override
     public void routeServices() {
 
-        get("/" + apiContext + "/version", (req, res) -> appVersion);
+        get("/" + apiContext + "/version/", (req, res) -> appVersion);
 
 
         // ----------------------- API /LOGIN
-        post("/" + apiContext + "/login", (req, res) -> {
+        post("/" + apiContext + "/login/", (req, res) -> {
                     response = apiService.authenticateUser(connection.getConnection(), jsonParser.fromJson(req.body(), UserDTO.class));
                     return response;
                 }
