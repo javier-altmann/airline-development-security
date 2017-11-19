@@ -274,4 +274,28 @@ public class FlightService {
 
     }
 
+    public String closeFlight(Connection connection, int id_flight) {
+        query = "UPDATE public.flight" +
+                "   SET status='close'" +
+                "where id_flight = " + id_flight + ";";
+
+
+        try {
+
+            st = connection.createStatement();
+
+            if (st.executeUpdate(query) == 1) {
+                response = "Vuelo cerrado correctamente";
+            } else {
+                response = "No se puedo cargar";
+
+            }
+            st.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+
+    }
 }

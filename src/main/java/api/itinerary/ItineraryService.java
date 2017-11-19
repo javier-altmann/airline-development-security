@@ -76,6 +76,69 @@ public class ItineraryService {
         return response;
     }
 
+    public String getItinerary(Connection connection, int id_itinerary) {
+
+        query = "with routesOrdered as (\n" +
+                "\twith itinerary as (\t\n" +
+                "\t\t(\n" +
+                "\t\t\tselect \n" +
+                "\t\t\t\t\t'from' \"ruta\",\n" +
+                "\t\t\t\t\titinerary.id_itinerary,\n" +
+                "\t\t\t\t   \tdestination.\"name\"\n" +
+                "\t\t\t\t   \n" +
+                "\t\t\tfrom itinerary\n" +
+                "\t\t\t\n" +
+                "\t\t\tinner join destination\n" +
+                "\t\t\t\ton destination.id_destination = itinerary.id_from_destination\n" +
+                "\t\t)\n" +
+                "\t\tunion all\n" +
+                "\t\t(\n" +
+                "\t\t\tselect \n" +
+                "\t\t\t\t\t'to' \"ruta\",\n" +
+                "\t\t\t\t\titinerary.id_itinerary,\n" +
+                "\t\t\t\t   \tdestination.\"name\"\n" +
+                "\t\t\t\t   \n" +
+                "\t\t\tfrom itinerary\n" +
+                "\t\t\t\n" +
+                "\t\t\tinner join destination\n" +
+                "\t\t\t\ton destination.id_destination = itinerary.id_to_destination\n" +
+                "\t\t)\n" +
+                "\t)\n" +
+                "\t\n" +
+                "\t\tselect \n" +
+                "\t\tDISTINCT\n" +
+                "\t\t\tid_itinerary,\n" +
+                "\t\t\t(\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
+                "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='from' limit 1\n" +
+                "\t\t\t) \"from\",\n" +
+                "\t\t\t(\n" +
+                "\t\t\t\tselect \"name\" from itinerary as \"from\"\n" +
+                "\t\t\t\twhere \"from\".id_itinerary=routesParent.id_itinerary and ruta='to' limit 1\n" +
+                "\t\t\t) \"to\"\n" +
+                "\t\t\t\t\n" +
+                "\t\tfrom itinerary as routesParent\n" +
+                "\t\t\n" +
+                "\t\twhere routesParent.id_itinerary = " + id_itinerary +
+                "\t\torder by id_itinerary\n" +
+                ")\n" +
+                "\n" +
+                "select to_json(routesOrdered) from routesOrdered ";
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                response = rs.getString(1);
+            }
+
+            rs.close();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
     public String createItinerary(Connection connection, ItineraryDTO route) {
         query = " INSERT INTO public.itinerary (id_itinerary, cost_ticket, id_from_destination, id_to_destination)" +
                 " VALUES(" +

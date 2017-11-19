@@ -66,16 +66,15 @@ public class FlightRouter implements Router {
                 }
         );
 
+        post("/" + apiContext + "/flight/:id/close/", (req, res) -> {
+            response = flightService.closeFlight(connection.getConnection(), Integer.parseInt(req.params(":id")));
+            return response;
+        });
 
 
 /*
-        post("/" + apiContext + "/flights/schedule", (req, res) ->
 
-        );
 
-        post("/" + apiContext + "/flights/close", (req, res) ->
-
-        );
 
         post("/" + apiContext + "/flights/sell", (req, res) ->
 

@@ -35,6 +35,11 @@ public class ItineraryRouter implements Router {
             return response;
         });
 
+        get("/" + apiContext + "/itinerary/:id/", (req, res) -> {
+            response = routeService.getItinerary(connection.getConnection(), Integer.parseInt(req.params(":id")));
+            return response;
+        });
+
         post("/" + apiContext + "/itinerary/", (req, res) -> {
                     response = routeService.createItinerary(connection.getConnection(), jsonParser.fromJson(req.body(), ItineraryDTO.class));
                     return response;
