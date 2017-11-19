@@ -6,15 +6,6 @@ public class FlightDTO {
     private String id_aircraft;
     private String id_itinerary;
     private String id_passenger_list;
-    private String status;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getId_flight() {
         return id_flight;

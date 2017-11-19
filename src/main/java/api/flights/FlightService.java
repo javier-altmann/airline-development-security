@@ -254,7 +254,7 @@ public class FlightService {
         query = "INSERT INTO public.flight\n" +
                 "            (id_flight, id_aircraft, id_itinerary, id_passenger_list,status)\n" +
                 "    VALUES" +
-                "(" + flight.getId_flight() + ", " + flight.getId_aircraft() + "," + flight.getId_itinerary() + "," + flight.getId_passenger_list() + ",'" + flight.getStatus() + "');";
+                "(" + flight.getId_flight() + ", " + flight.getId_aircraft() + "," + flight.getId_itinerary() + "," + flight.getId_passenger_list() + ",'open');";
         try {
 
             st = connection.createStatement();

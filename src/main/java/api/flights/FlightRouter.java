@@ -37,7 +37,7 @@ public class FlightRouter implements Router {
                 }
         );
 
-        post("/" + apiContext + "/flight/", (req, res) -> {
+        post("/" + apiContext + "/flight/schedule/", (req, res) -> {
                     response = flightService.createFlight(connection.getConnection(), jsonParser.fromJson(req.body(), FlightDTO.class));
                     return response;
                 }
