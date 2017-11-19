@@ -6,7 +6,16 @@ public class AircraftDTO {
     private String brand;
     private String model;
     private String id_seat;
+    private String max_seats;
     private String registrationNumber;
+
+    public String getMax_seats() {
+        return max_seats;
+    }
+
+    public void setMax_seats(String max_seats) {
+        this.max_seats = max_seats;
+    }
 
     public String getId_aircraft() {
         return id_aircraft;

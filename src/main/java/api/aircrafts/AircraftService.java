@@ -1,7 +1,6 @@
 package api.aircrafts;
 
 import models.AircraftDTO;
-import models.DestinationDTO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,8 +35,7 @@ public class AircraftService {
 
     }
 
-    public String createAircraft(Connection connection, AircraftDTO aircraft) {
-
+    public String createAircraft(Connection connection, AircraftDTO aircraft) throws SQLException {
 
         query = "INSERT INTO public.aircraft\n" +
                 "(id_aircraft, brand, model, \"registrationNumber\",id_seat)\n" +
@@ -47,6 +45,8 @@ public class AircraftService {
                 + aircraft.getModel() + "', '"
                 + aircraft.getRegistrationNumber() + "', '"
                 + aircraft.getId_seat() + "');\n";
+
+
         try {
 
             st = connection.createStatement();
@@ -55,13 +55,39 @@ public class AircraftService {
                 response = "Avion cargado correctamente";
             } else {
                 response = "No se puedo cargar";
-
             }
             st.close();
-            connection.close();
-        } catch (SQLException e) {
+        } catch (SQLException e)
+
+        {
             e.printStackTrace();
         }
+
+
+        for (int i = 1; i <= Integer.parseInt(aircraft.getMax_seats()); i++) {
+            query = "INSERT INTO public.seat(id_seat, max_seats, seat)\n" +
+                    "VALUES("
+                    + aircraft.getId_seat() + ","
+                    + aircraft.getMax_seats() + ","
+                    + i + ");\n ";
+            try {
+
+                st = connection.createStatement();
+
+                if (st.executeUpdate(query) == 1) {
+                    response = "Avion cargado correctamente";
+                } else {
+                    response = "No se puedo cargar";
+                }
+
+            } catch (SQLException e)
+
+            {
+                e.printStackTrace();
+            }
+        }
+        st.close();
+        connection.close();
         return response;
     }
 
