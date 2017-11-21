@@ -38,10 +38,9 @@ export class AltaAvionesComponent implements OnInit {
      avionObject.id_seat = Math.floor(Math.random()*900).toString();  
      avionObject.id_aircraft = Math.floor(Math.random()*900).toString();  
 
-    console.log(avionObject);
      this._altaAvionesServices.saveAvion(avionObject)
        .subscribe(data=>{
-          console.log("subscribe ok");
+          
        },
         error=> 
                 console.log(error));

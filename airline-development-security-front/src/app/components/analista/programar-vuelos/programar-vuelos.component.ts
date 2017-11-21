@@ -36,11 +36,9 @@ export class ProgramarVuelosComponent implements OnInit {
 
   guardarVuelo(){
    
-    
-        console.log(this.vueloObject);
          this._programarVuelosService.guardarVuelo(this.vueloObject)
            .subscribe(data=>{
-              console.log("guardado");              
+                           
            },
             error=> console.log("error en la petición "));
       }

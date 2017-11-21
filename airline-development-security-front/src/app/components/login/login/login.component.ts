@@ -29,23 +29,23 @@ export class LoginComponent implements OnInit {
   }
 
   peticionLogin(){
-    console.log(this.usuarioObject);
+   
     
     this._altaAvionesServices.login(this.usuarioObject).map(response => 
     this.result = response.authorization
     
     )
     .subscribe(data=>{
-      console.log(this.result);
+      
       if(this.result == 'admin'){
-        console.log("soy admin");
+       
         this.router.navigate(['/alta-aviones']);
       }else if(this.result == 'vendedor'){
         this.router.navigate(['/venta-tickets']);
-        console.log("soy vendedor");
+        
       }else if(this.result == 'analista'){
         this.router.navigate(['/programar-vuelos']);
-        console.log("analista");
+       
       }
     },
      error=> 

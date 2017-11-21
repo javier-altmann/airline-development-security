@@ -28,7 +28,7 @@ export class AltaDestinosComponent implements OnInit {
     const destinoObject = <AltaDestinos>this.form.value;
           destinoObject.id_destination = Math.floor(Math.random()*900).toString();  
 
-    console.log(destinoObject);
+ 
      this._altaDestinosServices.saveDestinos(destinoObject)
        .subscribe(data=>{
           

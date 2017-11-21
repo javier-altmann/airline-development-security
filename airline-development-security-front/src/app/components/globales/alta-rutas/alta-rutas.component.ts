@@ -37,11 +37,11 @@ export class AltaRutasComponent implements OnInit {
 
   guardarAltaRuta(){
     
-    console.log(this.rutasObject);
+
     
     this._altaDestinosServices.saveRutas(this.rutasObject)
     .subscribe(data=>{
-       console.log("subscribe ok");
+       
     },
      error=> 
              console.log(error));
