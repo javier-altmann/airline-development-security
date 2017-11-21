@@ -5,6 +5,7 @@ import { AltaDestinosComponent  } from './components/globales/alta-destinos/alta
 import { ProgramarVuelosComponent } from './components/analista/programar-vuelos/programar-vuelos.component';
 import { CerrarVuelosComponent  } from './components/vendedor/cerrar-vuelos/cerrar-vuelos.component';
 import {  VentaTicketsComponent } from './components/vendedor/venta-tickets/venta-tickets.component';
+import {  AltaRutasComponent } from './components/globales/alta-rutas/alta-rutas.component';
 
 
 
@@ -16,6 +17,7 @@ const APP_ROUTES: Routes = [
   { path: 'programar-vuelos', component: ProgramarVuelosComponent },
   { path: 'cerrar-vuelos', component: CerrarVuelosComponent  },
   { path: 'venta-tickets', component: VentaTicketsComponent  },
+  { path: 'alta-rutas', component: AltaRutasComponent  },
   
   { path: '**', pathMatch:'full', redirectTo: 'login' }
 ];

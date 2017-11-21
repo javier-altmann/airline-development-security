@@ -7,7 +7,7 @@ import { AltaAviones } from '../interfaces/alta-aviones';
 @Injectable()
 export class AltaAvionesService {
 
-  private URL:string = "s";
+  private URL:string = "http://back-airline-security.herokuapp.com/api/aircraft/";
   private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
   
 
@@ -16,7 +16,11 @@ export class AltaAvionesService {
   
   saveAvion(avion:AltaAviones){
     
-    return this.http.post<AltaAviones>(this.URL, JSON.stringify(avion),{headers:this.headers});            
+    return this.http.post(this.URL, JSON.stringify(avion),
+    {
+      headers:this.headers, 
+      responseType: 'text'
+     });            
   }
 
 }

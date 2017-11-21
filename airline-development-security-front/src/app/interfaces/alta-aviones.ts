@@ -1,6 +1,9 @@
 export interface AltaAviones {
-    marca:string;
-    modelo:string;
-    matricula:string;
-    cantidadButacas:number;
+    id_aircraft:string;
+    brand:string;
+    model:string;
+    id_seat:string;
+    max_seats:string;
+   registrationNumber:string;
 }
+

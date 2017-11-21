@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramarVuelosService  } from '../../../services/programar-vuelos.service';
 import { Observable } from 'rxjs/Observable';
-import { AvionesResponse } from '../../../interfaces/aviones-response';
-import { RutasResponse } from '../../../interfaces/rutas-response';
+//import { RutasResponse } from '../../../interfaces/rutas-response';
 import { Vuelos } from '../../../interfaces/vuelos';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Itinerary } from '../../../interfaces/itinerary';
+import { Aircraft } from '../../../interfaces/aircraft';
+import { VueloVm } from '../../../interfaces/vuelo-vm';
 
 @Component({
   selector: 'app-programar-vuelos',
@@ -12,33 +14,33 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ProgramarVuelosComponent implements OnInit {
 
- public avion:Observable<AvionesResponse>;
- public ruta:Observable<RutasResponse>;
- form:FormGroup;
+ public aircrafts:Observable<Aircraft>;
+ public itinerarys:Observable<Itinerary>;
+ vueloObject:VueloVm = {
+  id_flight : Math.floor(Math.random()*900).toString(),
+  id_aircraft : '',
+  id_itinerary : '',
+  id_passenger_list : '1'
+ }
 
-  constructor(private _programarVuelosService:ProgramarVuelosService, private formularioVuelo:FormBuilder) {
-     this.form = formularioVuelo.group({
-      ruta:['', Validators.required],
-      avion:['',Validators.required]
-     })
-   }
+  constructor(private _programarVuelosService:ProgramarVuelosService) { }
  
   
   ngOnInit() {
 
-   this.avion = this._programarVuelosService.getAvionesDisponibles()
-   this.ruta = this._programarVuelosService.getRutas();
+   this.itinerarys = this._programarVuelosService.getItinerary();
+   this.aircrafts = this._programarVuelosService.getAircraft();
   
 
   }
 
   guardarVuelo(){
-    let vueloObject = <Vuelos>this.form.value;
+   
     
-        console.log(vueloObject);
-         this._programarVuelosService.guardarVuelo(vueloObject)
+        console.log(this.vueloObject);
+         this._programarVuelosService.guardarVuelo(this.vueloObject)
            .subscribe(data=>{
-              
+              console.log("guardado");              
            },
             error=> console.log("error en la petición "));
       }

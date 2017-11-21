@@ -1,6 +1,5 @@
 export interface AltaDestinos {
-    ruta:string;
-    inicio:string;
-    destino:string;
-    costo:number;
+    id_destination:string;
+    name:string;
+    
 }

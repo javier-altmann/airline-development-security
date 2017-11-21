@@ -4,30 +4,31 @@
     <h1>Programar vuelos</h1>
 </div>
 
-<div class="container menu-margin">
-<form [formGroup]="form">
 
-  <div class="form-row">
-    <div class="col">
-        <label for="inputRuta">Ruta</label>
-    <select *ngIf="ruta | async as ruta" class="form-control" formControlName="ruta">
-        <option [value]="rutas.name" *ngFor="let rutas of ruta">
-          {{ rutas.name}}
+
+
+<div class="container">
+    <div class="form-row">
+    
+  <div class="form-group col-md-6">
+    <label for="inputInicio">Itinerario</label>
+    <select [(ngModel)] = "vueloObject.id_itinerary"  *ngIf="itinerarys | async as itinerary" class="form-control" >
+      <option [value]="itinerarys.id_itinerary"   *ngFor="let itinerarys of itinerary">
+      {{ itinerarys.from}} - {{itinerarys.to}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-6">
+      <label for="inputInicio">Modelo</label>
+      <select [(ngModel)] = "vueloObject.id_aircraft"  *ngIf="aircrafts | async as aircraft" class="form-control" >
+        <option [value]="aircrafts.id_aircraft" *ngFor="let aircrafts of aircraft">
+            {{ aircrafts.id_aircraft}} - {{ aircrafts.model}} 
         </option>
       </select>
-      </div>
-
-    <div class="col">
-        <label for="inputAvion">Avión</label>     
-          <select *ngIf="avion | async as avion" class="form-control" formControlName="avion">
-              <option [value]="aviones.name" *ngFor="let aviones of avion">
-                {{ aviones.name}}
-              </option>
-            </select>
     </div>
-  </div>
-  <br>
-  <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid"   (click)="guardarVuelo()">Guardar</button>
-</form>
-</div>
 
+
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" (click)="guardarVuelo()" >Guardar</button>
+   </div> 

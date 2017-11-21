@@ -9,38 +9,39 @@
     <form [formGroup]="form">
       <div class="form-group" >
         <label for="exampleFormControlInput1">Marca</label>
-        <input type="text" name="marca" class="form-control" [ngClass]="{
-          'is-invalid': form.controls.marca.errors, 
-          'is-valid': form.controls.marca.valid 
-        }" placeholder="Marca" formControlName="marca">
+        <input type="text" name="brand" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.brand.errors, 
+          'is-valid': form.controls.brand.valid 
+        }" placeholder="Marca" formControlName="brand">
       
       </div>
       
+
       <div class="form-group">
         <label for="exampleFormControlInput1">Modelo</label>
-        <input  name="modelo" type="text" class="form-control" [ngClass]="{
-          'is-invalid': form.controls.modelo.errors, 
-          'is-valid': form.controls.modelo.valid 
-        }" formControlName="modelo" placeholder="Boeing 747">
+        <input  name="model" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.model.errors, 
+          'is-valid': form.controls.model.valid 
+        }" formControlName="model" placeholder="Boeing 747">
         
       </div> 
 
       <div class="form-group" >
         <label for="exampleFormControlInput1">Matricula</label>
-        <input  name="matricula" type="text" class="form-control" [ngClass]="{
-          'is-invalid': form.controls.matricula.errors, 
-          'is-valid': form.controls.matricula.valid 
-        }" formControlName="matricula" placeholder="ADS10D">
+        <input  name="registrationNumber" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.registrationNumber.errors, 
+          'is-valid': form.controls.registrationNumber.valid 
+        }" formControlName="registrationNumber" placeholder="ADS10D">
         
       </div>
 
 
       <div class="form-group">
         <label for="exampleFormControlInput1">Butacas</label>
-        <input  name="butacas" type="text" class="form-control" [ngClass]="{
-          'is-invalid': form.controls.butacas.errors, 
-          'is-valid': form.controls.butacas.valid || form.controls.butacas.errors.maxlength
-        }" formControlName="butacas" placeholder="50">
+        <input  name="max_seats" type="text" class="form-control" [ngClass]="{
+          'is-invalid': form.controls.max_seats.errors, 
+          'is-valid': form.controls.max_seats.valid || form.controls.max_seats.errors.maxlength
+        }" formControlName="max_seats" placeholder="50">
 
       </div>
       

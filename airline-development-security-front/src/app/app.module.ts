@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
+import { RouterModule, Routes } from '@angular/router';
 
 //Rutas
 import {  APP_ROUTING } from './app.routes';
@@ -12,6 +12,8 @@ import { ProgramarVuelosService } from './services/programar-vuelos.service';
 import { AltaAvionesService } from './services/alta-aviones.service';
 import { AltaDestinosService } from './services/alta-destinos.service';
 import { VentaTicketsService } from './services/venta-tickets.service';
+import { AltaRutasService } from './services/alta-rutas.service';
+import { LoginService } from './services/login.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -25,6 +27,9 @@ import { ProgramarVuelosComponent } from './components/analista/programar-vuelos
 import { VentaTicketsComponent } from './components/vendedor/venta-tickets/venta-tickets.component';
 import { CerrarVuelosComponent } from './components/vendedor/cerrar-vuelos/cerrar-vuelos.component';
 import { MenuGlobalComponent } from './components/shared/menu-global/menu-global.component';
+import { AltaRutasComponent } from './components/globales/alta-rutas/alta-rutas.component';
+
+
 
 
 
@@ -41,17 +46,18 @@ import { MenuGlobalComponent } from './components/shared/menu-global/menu-global
     ProgramarVuelosComponent,
     VentaTicketsComponent,
     CerrarVuelosComponent,
-    MenuGlobalComponent
-  ],
+    MenuGlobalComponent,
+    AltaRutasComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     APP_ROUTING,
-
+    RouterModule
   ],
-  providers: [ProgramarVuelosService, AltaAvionesService,AltaDestinosService, VentaTicketsService ],
+  providers: [ProgramarVuelosService, AltaAvionesService,AltaDestinosService, VentaTicketsService, AltaRutasService, LoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

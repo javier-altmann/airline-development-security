@@ -19,13 +19,13 @@ export class AltaAvionesComponent implements OnInit {
   }
   validacionesFormularioAltaDeAviones(formulario:FormBuilder){
     this.form = formulario.group({
-      marca:['', Validators.required],
-      modelo:['', Validators.required],
-      matricula:['', Validators.required],
-      butacas: ['', Validators.compose([
+      brand:['', Validators.required],
+      model:['', Validators.required],
+      max_seats: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(3)
-      ])] 
+      ])],
+      registrationNumber:['', Validators.required] 
      })
   }
   ngOnInit() {
@@ -34,14 +34,17 @@ export class AltaAvionesComponent implements OnInit {
 
   guardarAltaAvion(){
     
-    let avionObject = <AltaAviones>this.form.value;
+    const avionObject = <AltaAviones>this.form.value;
+     avionObject.id_seat = Math.floor(Math.random()*900).toString();  
+     avionObject.id_aircraft = Math.floor(Math.random()*900).toString();  
 
     console.log(avionObject);
      this._altaAvionesServices.saveAvion(avionObject)
        .subscribe(data=>{
-          
+          console.log("subscribe ok");
        },
-        error=> console.log("error en la petición "));
+        error=> 
+                console.log(error));
   }
 
 }

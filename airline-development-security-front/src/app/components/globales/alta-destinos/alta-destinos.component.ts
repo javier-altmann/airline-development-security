@@ -16,10 +16,7 @@ export class AltaDestinosComponent implements OnInit {
 
   validacionesFormularioAltaDeDestinos(formulario:FormBuilder){
     this.form = formulario.group({
-      ruta:['', Validators.required],
-      inicio:['', Validators.required],
-      destino:['', Validators.required],
-      costo: ['', Validators.required] 
+      name:['', Validators.required],
      })
   }
 
@@ -28,7 +25,8 @@ export class AltaDestinosComponent implements OnInit {
 
   guardarAltaDestino(){
     
-    let destinoObject = <AltaDestinos>this.form.value;
+    const destinoObject = <AltaDestinos>this.form.value;
+          destinoObject.id_destination = Math.floor(Math.random()*900).toString();  
 
     console.log(destinoObject);
      this._altaDestinosServices.saveDestinos(destinoObject)

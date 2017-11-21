@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../../services/login.service';
+import { Usuario } from '../../../interfaces/usuario';
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/map';
+import { LoginVm } from '../../../interfaces/login-vm';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +13,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  usuarioObject:Usuario  = {
+    username:'',
+    password:''
+
+  }
+  result:string; 
+
+
+  constructor(private _altaAvionesServices:LoginService, private router:Router) {
+
+   }
 
   ngOnInit() {
   }
 
-}
+  peticionLogin(){
+    console.log(this.usuarioObject);
+    
+    this._altaAvionesServices.login(this.usuarioObject).map(response => 
+    this.result = response.authorization
+    
+    )
+    .subscribe(data=>{
+      console.log(this.result);
+      if(this.result == 'admin'){
+        console.log("soy admin");
+        this.router.navigate(['/alta-aviones']);
+      }else if(this.result == 'vendedor'){
+        this.router.navigate(['/venta-tickets']);
+        console.log("soy vendedor");
+      }else if(this.result == 'analista'){
+        this.router.navigate(['/programar-vuelos']);
+        console.log("analista");
+      }
+    },
+     error=> 
+             console.log(error));
+    }
+  }
+
+

@@ -15,11 +15,11 @@ export class VentaTicketsService {
 
   private URL_POST:string = "s";
   private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
-  private URL:string  = 'http://localhost:3000';
+  private URL:string  = 'back-airline-security.herokuapp.com';
   
     public getAsientosDisponibles(): Observable<AsientosResponse>{
   
-     return this.http.get<AsientosResponse>(this.URL+'/asientosDisponibles');
+     return this.http.get<AsientosResponse>(this.URL+'/api/flights/');
   
     }
   

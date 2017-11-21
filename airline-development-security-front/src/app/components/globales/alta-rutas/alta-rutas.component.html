@@ -1,0 +1,38 @@
+<app-menu-global></app-menu-global>
+
+<div class="container distancia-menu">
+    <h1>Alta de Rutas</h1>
+</div>
+
+
+<div class="container">
+  <div class="form-row">
+  
+<div class="form-group col-md-6">
+  <label for="inputInicio">Inicio</label>
+  <select [(ngModel)] = "rutasObject.id_from_destination"  *ngIf="destinos | async as destino" class="form-control" >
+    <option [value]="destinos.id_destination" *ngFor="let destinos of destino">
+    {{ destinos.name}}
+    </option>
+  </select>
+</div>
+
+
+<div class="form-group col-md-6">
+    <label for="inputInicio">Hasta</label>
+    <select [(ngModel)] = "rutasObject.id_to_destination" *ngIf="destinos | async as destino" class="form-control" >
+      <option [value]="destinos.id_destination" *ngFor="let destinos of destino">
+      {{ destinos.name}}
+      </option>
+    </select>
+  </div>
+ 
+</div>
+
+<div class="form-group">
+    <label for="exampleFormControlInput1"> Costo </label>
+    <input name="cost_ticket" [(ngModel)] = "rutasObject.cost_ticket"  type="text" class="form-control" placeholder="500">
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" (click)="guardarAltaRuta()" >Guardar</button>
+</div>
