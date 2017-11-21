@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AltaAvionesService } from '../../../services/alta-aviones.service';
 import { AltaAviones } from '../../../interfaces/alta-aviones';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { DialogService } from 'ng2-bootstrap-modal';
+
 
 
 @Component({
@@ -11,10 +13,13 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class AltaAvionesComponent implements OnInit {
   form:FormGroup;
+  flag:boolean = false;
+  flagError:boolean = false;
  
- 
-  constructor(private _altaAvionesServices:AltaAvionesService, private formularioAlta:FormBuilder) {
-    
+  constructor(private _altaAvionesServices:AltaAvionesService, private formularioAlta:FormBuilder,
+    dialogService: DialogService) {
+  
+  
       this.validacionesFormularioAltaDeAviones(formularioAlta);
   }
   validacionesFormularioAltaDeAviones(formulario:FormBuilder){
@@ -40,10 +45,12 @@ export class AltaAvionesComponent implements OnInit {
 
      this._altaAvionesServices.saveAvion(avionObject)
        .subscribe(data=>{
-          
+              this.flag = true;
+              this.form.reset();
        },
         error=> 
-                console.log(error));
+        
+        this.flagError = true);
   }
 
 }

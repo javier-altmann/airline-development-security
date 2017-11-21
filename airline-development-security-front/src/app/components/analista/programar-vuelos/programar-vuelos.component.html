@@ -4,8 +4,13 @@
     <h1>Programar vuelos</h1>
 </div>
 
+<alert type="success" *ngIf="flag" dismissOnTimeout="3000">
+  <strong>Alta exitosa!</strong> El alta de la programación del vuelo fue correcto.
+</alert>
 
-
+<alert type="danger" *ngIf="flagError" dismissOnTimeout="2000">
+  <strong>Alta Incorrecta!</strong> Vuelva a intentarlo
+</alert>
 
 <div class="container">
     <div class="form-row">

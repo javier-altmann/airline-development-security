@@ -30,9 +30,9 @@ import { MenuGlobalComponent } from './components/shared/menu-global/menu-global
 import { AltaRutasComponent } from './components/globales/alta-rutas/alta-rutas.component';
 
 
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
-
-
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,9 @@ import { AltaRutasComponent } from './components/globales/alta-rutas/alta-rutas.
     ReactiveFormsModule,
     HttpClientModule,
     APP_ROUTING,
-    RouterModule
+    RouterModule,
+    AlertModule.forRoot(),
+    BootstrapModalModule.forRoot ({container: document.body})
   ],
   providers: [ProgramarVuelosService, AltaAvionesService,AltaDestinosService, VentaTicketsService, AltaRutasService, LoginService ],
   bootstrap: [AppComponent]

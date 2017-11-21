@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AltaDestinos } from '../../../interfaces/alta-destinos';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AltaDestinosService } from '../../../services/alta-destinos.service';
+import { DialogService } from 'ng2-bootstrap-modal';
 
 
 @Component({
@@ -10,7 +11,11 @@ import { AltaDestinosService } from '../../../services/alta-destinos.service';
 })
 export class AltaDestinosComponent implements OnInit {
   form:FormGroup;
-  constructor(private _altaDestinosServices:AltaDestinosService, private formularioAlta:FormBuilder) { 
+  flag:boolean = false;
+  flagError:boolean = false;
+
+  constructor(private _altaDestinosServices:AltaDestinosService, private formularioAlta:FormBuilder,
+              private dialogService: DialogService) { 
     this.validacionesFormularioAltaDeDestinos(formularioAlta);
   }
 
@@ -31,9 +36,10 @@ export class AltaDestinosComponent implements OnInit {
  
      this._altaDestinosServices.saveDestinos(destinoObject)
        .subscribe(data=>{
-          
+          this.flag = true;
+          this.form.reset();
        },
-        error=> console.log("error en la petición "));
+        error=> this.flagError = true);
   }
 
 

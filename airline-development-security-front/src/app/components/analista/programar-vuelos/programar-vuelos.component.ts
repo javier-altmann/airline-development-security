@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Itinerary } from '../../../interfaces/itinerary';
 import { Aircraft } from '../../../interfaces/aircraft';
 import { VueloVm } from '../../../interfaces/vuelo-vm';
+import { DialogService } from 'ng2-bootstrap-modal';
 
 @Component({
   selector: 'app-programar-vuelos',
@@ -16,6 +17,9 @@ export class ProgramarVuelosComponent implements OnInit {
 
  public aircrafts:Observable<Aircraft>;
  public itinerarys:Observable<Itinerary>;
+ flag:boolean = false;
+ flagError:boolean = false;
+ 
  vueloObject:VueloVm = {
   id_flight : Math.floor(Math.random()*900).toString(),
   id_aircraft : '',
@@ -23,7 +27,7 @@ export class ProgramarVuelosComponent implements OnInit {
   id_passenger_list : '1'
  }
 
-  constructor(private _programarVuelosService:ProgramarVuelosService) { }
+  constructor(private _programarVuelosService:ProgramarVuelosService, dialogService: DialogService) { }
  
   
   ngOnInit() {
@@ -34,12 +38,18 @@ export class ProgramarVuelosComponent implements OnInit {
 
   }
 
+  limpiarFormulario():void{
+    this.vueloObject.id_itinerary = '',
+    this.vueloObject.id_aircraft = ''
+  }
+
   guardarVuelo(){
    
          this._programarVuelosService.guardarVuelo(this.vueloObject)
            .subscribe(data=>{
-                           
+             this.flag = true;
+             this.limpiarFormulario();              
            },
-            error=> console.log("error en la petición "));
+            error=> this.flagError = true);
       }
 }

@@ -4,7 +4,13 @@
     <h1>Alta de Rutas</h1>
 </div>
 
+<alert type="success" *ngIf="flag" dismissOnTimeout="3000">
+  <strong>Alta exitosa!</strong> El alta de la ruta fue correcto.
+</alert>
 
+<alert type="danger" *ngIf="flagError" dismissOnTimeout="2000">
+  <strong>Alta Incorrecta!</strong> Vuelva a intentarlo
+</alert>
 <div class="container">
   <div class="form-row">
   
