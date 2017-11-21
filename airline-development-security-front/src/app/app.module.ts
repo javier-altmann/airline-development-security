@@ -29,7 +29,7 @@ import { CerrarVuelosComponent } from './components/vendedor/cerrar-vuelos/cerra
 import { MenuGlobalComponent } from './components/shared/menu-global/menu-global.component';
 import { AltaRutasComponent } from './components/globales/alta-rutas/alta-rutas.component';
 
-
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -56,6 +56,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     HttpClientModule,
     APP_ROUTING,
     RouterModule,
+    BootstrapModalModule.forRoot ({container: document.body}),
     AlertModule.forRoot()
   ],
   providers: [ProgramarVuelosService, AltaAvionesService,AltaDestinosService, VentaTicketsService, AltaRutasService, LoginService ],
