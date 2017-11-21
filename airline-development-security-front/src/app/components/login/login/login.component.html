@@ -8,6 +8,7 @@
                 <input class="form-control input-sm"
                        id="username"
                        name="username"
+                       placeholder="username"
                        [(ngModel)] = "usuarioObject.username"
                        />
 
@@ -25,6 +26,3 @@
         </form>
     </div>
 </div>
-
-{{ usuarioObject.username | json }}
-{{ usuarioObject.password | json }}
