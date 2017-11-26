@@ -4,11 +4,16 @@
 
 * Importar `Android Desarrollo Seguro.postman_collection.json` en **POSTMAN** para tener los request configurados.
 
-
 ## Como subir a Heroku
 
 * Se requerirá tener instalado Heroku Cli. (https://devcenter.heroku.com/articles/heroku-cli)
 * Se requerirá tener Maven instalado.
+
+## Como levantar app localmente
+
+* Ejecutar mvn clean package: descargará dependencias.
+* Ejecutar **/airline-development-security/src/main/java/Main.java**: se encargará de levantar routers y modules.
+
 
 -----------
 
@@ -71,3 +76,5 @@
 #### Desplegar:
 
     mvn heroku:deploy
+    
+    
